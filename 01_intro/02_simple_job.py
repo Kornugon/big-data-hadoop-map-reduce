@@ -4,6 +4,7 @@ from mrjob.step import MRStep
 # terminal:
 # python 02_simple_job.py SMSSpamCollection.txt
 
+
 class MRSimpleJob(MRJob):
 
     def steps(self):
@@ -12,7 +13,7 @@ class MRSimpleJob(MRJob):
                    reducer=self.reducer)
         ]
 
-    def mapper(selfself, _, line):
+    def mapper(self, _, line):
         yield 'line', 1
         yield 'words', len(line.split())
         yield 'chars', len(line)
@@ -23,4 +24,3 @@ class MRSimpleJob(MRJob):
 
 if __name__ == '__main__':
     MRSimpleJob.run()
-
